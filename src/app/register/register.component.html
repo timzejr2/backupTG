@@ -1,0 +1,35 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="nav-link" routerLink="">
+    <img src="../../assets/images/logo.png" alt="madeGL" class="logo">
+  </a>
+  <a class="nav-link" href="/login"><mat-icon>login</mat-icon> login</a>
+</nav>
+
+<div class="login-area">
+  <img src="../../assets/images/logo.png" alt="madeGL" class="logo2">
+  <h1 class="header">Crie uma conta</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" style="display: block; margin-left: auto; margin-right: auto;">
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control" formControlName="password">
+            <label class="error">{{errorMessage}}</label>
+            <label class="success">{{successMessage}}</label>
+          </div>
+          <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-primary" style="display: block; margin-left: auto; margin-right: auto;">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-md-4 col-md-offset-4" style="display: block; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center;">Já tem uma conta? Faça o <a href="/login">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>

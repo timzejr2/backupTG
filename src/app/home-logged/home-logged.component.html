@@ -1,0 +1,46 @@
+<nav class="navbar navbar-light bg-light justify-content-left">
+  <a class="nav-link" routerLink="home-logged">
+    <img src="../../assets/images/logo.png" alt="madeGL" class="logo">
+  </a>
+  <div class="col-md-4 offset-md-1">
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}"
+        placeholder="Search by name..." (keyup)="searchByName()">
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <ion-icon class="icon" name="search"></ion-icon>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="right_menu">
+    <page-user-nav style="margin-right: 15px;"></page-user-nav>
+    <button mat-button [matMenuTriggerFor]="beforeMenu"><mat-icon>menu</mat-icon></button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before" style="position: absolute; right: 5px;">
+      <a href="/new-model"><mat-icon>add</mat-icon> maquete</a>
+      <br>
+      <a href="/model-manager"><mat-icon>settings</mat-icon> Gerenciar maquetes</a>
+    </mat-menu>
+  </div>
+</nav>
+
+
+
+<div class="list-group users-list">
+  <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="row">
+      <div class="col col-md-2 image-col">
+        <img class="image" [src]="item.payload.doc.data().avatar">
+      </div>
+      <div class="col col-md-8 text-col">
+        <h5 class="mb-1">{{item.payload.doc.data().name}} {{item.payload.doc.data().surname}}</h5>
+        <small>Age: {{item.payload.doc.data().age}}</small>
+      </div>
+      <div class="col col-md-2 actions-col">
+        <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+          <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
